@@ -6,8 +6,6 @@ import org.junit.Assert;
 import java.io.*;
 
 public class SensorDataTests {
-    public static final int PORTNUMBER = 5555;
-    public static final String LOCALHOST = "localhost";
     public static final long TIMESTAMP = 010203040;
     public static float VALUE = 0.3f;
     public static String SENSORNAME = "sensorname";
@@ -16,7 +14,6 @@ public class SensorDataTests {
 
     @Test()
     public void goodTest() throws IOException {
-
 
         SensorData s = new SensorDataImpl(TIMESTAMP, VALUE, SENSORNAME);
 

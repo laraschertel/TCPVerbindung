@@ -1,5 +1,7 @@
 package tcp;
 
+import sensordata.SensorData;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -10,27 +12,25 @@ public class TCPConnector implements Client, Server, Connection {
     private Socket socket;
 
     @Override
-    public Connection connect(String hostname, int port) throws IOException {
-        this.socket = new Socket(hostname, port);
-        return this;
+    public Connection connect2Host(String hostname, int port) throws IOException {
+        return null;
     }
 
     @Override
     public Connection acceptConnection(int port) throws IOException {
-        ServerSocket srvSocket = new ServerSocket(port);
-        System.out.println("server socket created");
-        this.socket = srvSocket.accept();
-        return this;
+        return null;
     }
+
+
 
     @Override
     public OutputStream getOutputStream() throws IOException {
-        return this.socket.getOutputStream();
+        return null;
     }
 
     @Override
     public InputStream getInputStream() throws IOException {
-        return this.socket.getInputStream();
+        return null;
     }
 
 }
