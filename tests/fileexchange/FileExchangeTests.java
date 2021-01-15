@@ -11,8 +11,8 @@ public class FileExchangeTests {
     public static OutputStream os;
     public static InputStream is;
 
-    @Test
-    public void fileExchange() throws IOException {
+    @Test // this test doesnt make sense (?)
+    public void goodFileExchange() throws IOException {
         FileSender fileSender = new FileSend();
 
         fileSender.sendFile(FILENAME, os);
@@ -20,5 +20,29 @@ public class FileExchangeTests {
         FileReceiver fileReceiver = new FileReceive();
 
         fileReceiver.receivedFile(FILENAME, is);
+    }
+
+    @Test (expected=Exception.class)
+    public void badFileExchangeTest1() throws IOException {
+        FileSender fileSender = new FileSend();
+
+        // filename cant be null
+        fileSender.sendFile(null, os);
+
+        FileReceiver fileReceiver = new FileReceive();
+
+        fileReceiver.receivedFile(FILENAME, is);
+    }
+
+    @Test (expected=Exception.class)
+    public void badFileExchangeTest2() throws IOException {
+        FileSender fileSender = new FileSend();
+
+        // filename cant be null
+        fileSender.sendFile(FILENAME, os);
+
+        FileReceiver fileReceiver = new FileReceive();
+
+        fileReceiver.receivedFile(FILENAME, null);
     }
 }

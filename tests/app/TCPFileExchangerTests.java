@@ -10,7 +10,7 @@ public class TCPFileExchangerTests {
     public static final String HOST = "localhost";
 
 
-    @Test
+    @Test // this test doesnt make sense (?)
     public void goodTCPFileExchangerTest() throws IOException {
 
         TCPFileExchanger tcpFileExchange = new  TCPFileExchangerImpl();
@@ -21,7 +21,7 @@ public class TCPFileExchangerTests {
 
     }
 
-    @Test
+    @Test (expected=Exception.class)
     public void badTCPFileExchangerTest1() throws IOException {
 
         TCPFileExchanger tcpFileExchange = new  TCPFileExchangerImpl();
@@ -32,7 +32,7 @@ public class TCPFileExchangerTests {
         tcpFileExchange.receiveFile(null, PORTNUMBER);
 
     }
-    @Test
+    @Test (expected=Exception.class)
     public void badTCPFileExchangerTest2() throws IOException {
 
         TCPFileExchanger tcpFileExchange = new  TCPFileExchangerImpl();

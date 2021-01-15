@@ -37,7 +37,7 @@ public class TCPSensorDataExchangeTests {
 
     }
 
-    @Test
+    @Test(expected=Exception.class)
     public void badTCPDataExchangerTest1() throws IOException {
         SensorData s = new SensorDataImpl(TIMESTAMP, VALUE, SENSORNAME);
 
@@ -48,9 +48,13 @@ public class TCPSensorDataExchangeTests {
 
         SensorData receivedData = tcpSensorDataExchanger.receiveSensorDataFromClient(PORTNUMBER);
 
+        Assert.assertEquals(s.getTimeStamp(), receivedData.getTimeStamp());
+        Assert.assertEquals(s.getValue(), receivedData.getValue(), 0001);
+        Assert.assertEquals(s.getSensorName(), receivedData.getSensorName());
+
     }
 
-    @Test
+    @Test(expected=Exception.class)
     public void badTCPDataExchangerTest2() throws IOException {
         SensorData s = new SensorDataImpl(TIMESTAMP, VALUE, SENSORNAME);
 
@@ -60,6 +64,10 @@ public class TCPSensorDataExchangeTests {
         tcpSensorDataExchanger.sendSensorData2host(null, HOST, PORTNUMBER );
 
         SensorData receivedData = tcpSensorDataExchanger.receiveSensorDataFromClient(PORTNUMBER);
+
+        Assert.assertEquals(s.getTimeStamp(), receivedData.getTimeStamp());
+        Assert.assertEquals(s.getValue(), receivedData.getValue(), 0001);
+        Assert.assertEquals(s.getSensorName(), receivedData.getSensorName());
 
     }
 

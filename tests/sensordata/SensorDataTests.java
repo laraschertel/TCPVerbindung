@@ -28,4 +28,32 @@ public class SensorDataTests {
         Assert.assertEquals(s.getSensorName(), receivedData.getSensorName());
     }
 
+    @Test()
+    public void badTest1() throws IOException {
+
+        SensorData s = new SensorDataImpl(TIMESTAMP, VALUE, SENSORNAME);
+
+        SensorDataSender sensorDataSender = new SensorDataSend();
+       // data cannot be null
+        sensorDataSender.sendSensorData(null, os);
+
+        SensorDataReceiver sensorDataReceiver = new SensorDataReceive();
+        SensorData receivedData = sensorDataReceiver.receiveSensorData(is);
+
+    }
+
+    @Test()
+    public void badTest2() throws IOException {
+
+        SensorData s = new SensorDataImpl(TIMESTAMP, VALUE, SENSORNAME);
+
+        SensorDataSender sensorDataSender = new SensorDataSend();
+        // outputstream cannot be null
+        sensorDataSender.sendSensorData(null, null);
+
+        SensorDataReceiver sensorDataReceiver = new SensorDataReceive();
+        SensorData receivedData = sensorDataReceiver.receiveSensorData(is);
+
+    }
+
 }
